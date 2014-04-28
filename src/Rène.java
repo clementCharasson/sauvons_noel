@@ -1,12 +1,19 @@
 
-public class Rène {
+public class Rène extends Thread {
 
+	
+	
 	/**
-	 * @param args
+	 * Constructeur de Rène
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Rène() {
+		
 	}
-
+	
+	
+	
+	public void run() {
+		
+	}
+	
 }

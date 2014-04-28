@@ -1,12 +1,25 @@
 
-public class Elfe {
+public class Elfe  extends Thread {
 
+	
+	
+	
 	/**
-	 * @param args
+	 * Constructeur d'Elfe
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Elfe() {
+		
 	}
-
+	
+	
+	
+	
+	public void run() {
+		
+	}
+	
+	
+	
+	
+	
 }
