@@ -27,6 +27,7 @@ public class PereNoel extends Thread{
 		System.out.println("Pere Noël - réveillé");
 		this.notify();
 		if(nw instanceof Rene){
+			
 			this.tourne();
 			this.poolRene.freeAllWorkers();
 		}else{//c'est des elfes

@@ -5,39 +5,51 @@ public class main {
 
 	/**
 	 * @param args
-	 */
-	/*
-	public static void main(String[] args) {
-		Pool p = new Pool();
-		PereNoel pn = new PereNoel(p);
-		p.setPereNoel(pn);
-		
-		pn.start();
-		
-		//le temps de créer le thread :
-		 try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		 
-		 
-		p.reveil();
-
-		try {
-			pn.join();
-		} catch (InterruptedException e){
-			e.printStackTrace();
-		}
-	
-		System.out.println("fin du programme");
-	}*/
-	
+	 */	
 	
 	public static void main(String[] args) {
 		PoolRene poolR = new PoolRene();
-		
 		PereNoel pereN = new PereNoel(poolR);
+		poolR.setPereNoel(pereN);
+		
+		Rene r0 = new Rene(poolR);
+		Rene r1 = new Rene(poolR);
+		Rene r2 = new Rene(poolR);
+		Rene r3 = new Rene(poolR);
+		Rene r4 = new Rene(poolR);
+		Rene r5 = new Rene(poolR);
+		Rene r6 = new Rene(poolR);
+		Rene r7 = new Rene(poolR);
+		Rene r8 = new Rene(poolR);
+		
+		pereN.start();
+		r0.start();
+		r1.start();
+		r2.start();
+		r3.start();
+		r4.start();
+		r5.start();
+		r6.start();
+		r7.start();
+		r8.start();
+		
+		
+		
+		try {	
+			pereN.join();
+			r0.join();
+			r1.join();
+			r2.join();
+			r3.join();
+			r4.join();
+			r5.join();
+			r6.join();
+			r7.join();
+			r8.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

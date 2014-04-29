@@ -8,14 +8,15 @@ public class PoolRene extends Pool{
 	}
 	
 	//problème d'équité 4  
-	public synchronized void addWorker (Rene r){
+	public void addWorker (Rene r){
 		super.addWorker(r);
 		//vérifier qu'il y a 9 renne si c'est le cas réveiller le pere Noël :
 		if(this.getNbWorkers() == 9){
-			this.getPereNoel().reveille(r);
-		}
-		//sinon wait
-		r.attendre();
+			System.out.println("addWorker - je réveille le pere noel");
+			this.getPereNoel().reveille(r);//le dernier rène réveille le pere noël
+		}else
+			//sinon wait
+			r.attendre();
 	}
 	
 
