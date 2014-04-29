@@ -1,5 +1,5 @@
 
-public class Elfe  extends Thread {
+public class Elfe  extends Thread implements NoelWorker{
 
 	/**
 	 * Constructeur d'Elfe
@@ -12,6 +12,10 @@ public class Elfe  extends Thread {
 	
 	
 	public void run() {
+		
+	}
+	
+	public void travaille(){
 		
 	}
 
