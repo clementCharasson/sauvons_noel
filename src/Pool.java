@@ -10,8 +10,21 @@ public class Pool {
 	private int nbWorkers = 0;
 	private PereNoel pn;
 	
+	
+	
+	protected boolean ajoutPossible;
+	
+	
+	
+	
 	public Pool(){
 		this.listeWorker = new ArrayList<NoelWorker>();
+		
+		
+		this.ajoutPossible = true;
+		
+		
+		
 	}
 	
 	protected synchronized void addWorker (NoelWorker nw){
@@ -22,12 +35,15 @@ public class Pool {
 	/**
 	 * vide la liste des worker en attente et les réveilles
 	 */
-	protected void freeAllWorkers(){
+	protected   synchronized   void freeAllWorkers(){
+		this.ajoutPossible = false;
 		for(NoelWorker nw :this.listeWorker){
 			nw.reveiller();
 		}
 		this.listeWorker.removeAll(this.listeWorker);
 		this.nbWorkers = 0;
+		this.ajoutPossible = true;
+		notifyAll();
 	}
 
 	public void setPereNoel(PereNoel pn){

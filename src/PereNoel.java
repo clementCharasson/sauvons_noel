@@ -2,11 +2,15 @@
 public class PereNoel extends Thread{
 	
 	private PoolRene poolRene ;
+	private PoolElfes poolElfes ;
 
 	PereNoel(PoolRene poolRene){
 		this.poolRene = poolRene;
 	}
 	
+	PereNoel(PoolElfes poolElfes) {
+		this.poolElfes = poolElfes;
+	}
 	
 	public void  run(){
 		while(true){
@@ -30,7 +34,10 @@ public class PereNoel extends Thread{
 			this.tourne();
 			this.poolRene.freeAllWorkers();
 		}else{//c'est des elfes
-			;//
+			Elfe elfe = (Elfe) nw;
+			
+			//On resoud les problemes des elfes
+			this.resoudreProbleme();
 		}
 	}
 	
@@ -49,7 +56,7 @@ public class PereNoel extends Thread{
 	public void resoudreProbleme(){
 		System.out.println("le Père noël - résoud des problènes");
 		
-		//prendre le temps prévu pour la tache?? à voir
+		this.poolElfes.resoudreLesProblemes();
 	}
 
 }
