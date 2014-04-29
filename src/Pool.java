@@ -9,6 +9,7 @@ public class Pool {
 	private ArrayList<NoelWorker> listeWorker;//liste d'attente
 	private int nbWorkers = 0;
 	private PereNoel pn;
+	private boolean autoriseAjout;
 	
 	
 	
@@ -19,15 +20,17 @@ public class Pool {
 	
 	public Pool(){
 		this.listeWorker = new ArrayList<NoelWorker>();
-		
-		
 		this.ajoutPossible = true;
-		
-		
-		
 	}
 	
 	protected synchronized void addWorker (NoelWorker nw){
+		while(!ajoutPossible) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		this.listeWorker.add(nw);
 		this.nbWorkers++;
 	}
@@ -35,13 +38,17 @@ public class Pool {
 	/**
 	 * vide la liste des worker en attente et les réveilles
 	 */
+
 	protected   synchronized   void freeAllWorkers(){
 		this.ajoutPossible = false;
+
 		for(NoelWorker nw :this.listeWorker){
+			System.out.println("free 1 workers");
 			nw.reveiller();
 		}
 		this.listeWorker.removeAll(this.listeWorker);
 		this.nbWorkers = 0;
+
 		this.ajoutPossible = true;
 		notifyAll();
 	}

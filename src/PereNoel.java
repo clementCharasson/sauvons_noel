@@ -4,8 +4,9 @@ public class PereNoel extends Thread{
 	private PoolRene poolRene ;
 	private PoolElfes poolElfes ;
 
-	PereNoel(PoolRene poolRene){
+	PereNoel(PoolRene poolRene, PoolElfes poolElfes){
 		this.poolRene = poolRene;
+		this.poolElfes = poolElfes;
 	}
 	
 	PereNoel(PoolElfes poolElfes) {
@@ -31,6 +32,7 @@ public class PereNoel extends Thread{
 		System.out.println("Pere Noël - réveillé");
 		this.notify();
 		if(nw instanceof Rene){
+			
 			this.tourne();
 			this.poolRene.freeAllWorkers();
 		}else{//c'est des elfes
@@ -45,7 +47,7 @@ public class PereNoel extends Thread{
 	public void tourne(){//la tournée du pere Noel
 		System.out.println("Père noël - C'est la tournée de Noël");
 		try {
-			Thread.sleep(5000);//tournée
+			Thread.sleep(3000);//tournée
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
