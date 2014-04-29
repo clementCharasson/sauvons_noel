@@ -38,7 +38,7 @@ public class PereNoel extends Thread{
 	public void tourne(){//la tournée du pere Noel
 		System.out.println("Père noël - C'est la tournée de Noël");
 		try {
-			Thread.sleep(5000);//tournée
+			Thread.sleep(3000);//tournée
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
