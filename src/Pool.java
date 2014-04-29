@@ -6,29 +6,47 @@ import java.util.Set;
 
 public class Pool {
 	
-	protected ArrayList<NoelWorker> listeWorker;//liste d'attente
-	protected int nbWorkers = 0;
-	protected PereNoel pn;
+	private ArrayList<NoelWorker> listeWorker;//liste d'attente
+	private int nbWorkers = 0;
+	private PereNoel pn;
 	
 	public Pool(){
 		this.listeWorker = new ArrayList<NoelWorker>();
 	}
 	
-	public void reveil(){
-		this.pn.réveille(null);
+	protected synchronized void addWorker (NoelWorker nw){
+		this.listeWorker.add(nw);
+		this.nbWorkers++;
 	}
 	
+	/**
+	 * vide la liste des worker en attente et les réveilles
+	 */
+	protected void freeAllWorkers(){
+		for(NoelWorker nw :this.listeWorker){
+			nw.reveiller();
+		}
+		this.listeWorker.removeAll(this.listeWorker);
+		this.nbWorkers = 0;
+	}
+
 	public void setPereNoel(PereNoel pn){
 		this.pn = pn;
 	}
 	
-	protected void addWorker (NoelWorker nw){//TODO : probablement mettre un synchronized
-		this.listeWorker.add(nw);
-		this.nbWorkers++;
-		/*
-		if(this.nbWorkers >= 3){
-		}*/
+	public ArrayList<NoelWorker> getListeWorker() {
+		return listeWorker;
 	}
+
+	public int getNbWorkers() {
+		return nbWorkers;
+	}
+
+	public PereNoel getPereNoel() {
+		return pn;
+	}
+	
+	
 	
 	/*public void rentrer(NoelWorker nw){//
 		this.addWorker(nw);

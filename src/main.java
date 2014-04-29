@@ -6,6 +6,7 @@ public class main {
 	/**
 	 * @param args
 	 */
+	/*
 	public static void main(String[] args) {
 		Pool p = new Pool();
 		PereNoel pn = new PereNoel(p);
@@ -30,6 +31,15 @@ public class main {
 		}
 	
 		System.out.println("fin du programme");
+	}*/
+	
+	
+	public static void main(String[] args) {
+		PoolRene poolR = new PoolRene();
+		
+		PereNoel pereN = new PereNoel(poolR);
+		
+		
 	}
 	
 }

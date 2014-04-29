@@ -26,4 +26,12 @@ public class Rene extends Thread implements NoelWorker{
 		}
 	}
 
+
+
+	@Override
+	public void reveiller() {
+		this.notify();
+		
+	}
+
 }

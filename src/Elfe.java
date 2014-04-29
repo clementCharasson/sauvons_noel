@@ -19,6 +19,13 @@ public class Elfe  extends Thread implements NoelWorker{
 		
 	}
 
+
+	@Override
+	public void reveiller() {
+		this.notify();
+	}
+
+	
 }
 
 
