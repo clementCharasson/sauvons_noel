@@ -1,21 +1,18 @@
 
 public class PereNoel extends Thread{
-	
-	private PoolRene poolRene ;
-	private PoolElfes poolElfes ;
+	private SalleAttenteRene salleRene;
 
-	PereNoel(PoolRene poolRene, PoolElfes poolElfes){
-		this.poolRene = poolRene;
-		this.poolElfes = poolElfes;
+	PereNoel(SalleAttenteRene salleRene /*TODO salle d'attente des elfes*/){
+		this.salleRene = salleRene;
 	}
 	
-	PereNoel(PoolElfes poolElfes) {
-		this.poolElfes = poolElfes;
-	}
 	
 	public void  run(){
 		while(true){
 			this.dormir();
+			System.out.println("Pere noel réveillé - va faire un traitement");
+			this.traitement();
+			System.out.println("Pere noel réveillé - fin faire un traitement");
 		}
 	}
 	
@@ -28,23 +25,31 @@ public class PereNoel extends Thread{
 		}
 	}
 	
-	public synchronized void reveille(NoelWorker nw){
+	public synchronized void reveille(){
 		System.out.println("Pere Noël - réveillé");
-		this.notify();
-		if(nw instanceof Rene){
-			
+		this.notify();//réveiller le père Noël
+		System.out.println("Pere Noël - réveillé 2");
+	}
+	
+	private synchronized void traitement(){
+		//regarder la salle d'attente des Rènes :
+		if(salleRene.getNbRene() == 9){
 			this.tourne();
-			this.poolRene.freeAllWorkers();
-		}else{//c'est des elfes
-			Elfe elfe = (Elfe) nw;
+		}
+		/*
+		//regarder la salle d'attente des Efles :
+		if(???){
 			
 			//On resoud les problemes des elfes
 			this.resoudreProbleme();
 		}
+		*/
+		System.out.println("traitement fini");
 	}
 	
-	//pour les Rènes
-	public void tourne(){//la tournée du pere Noel
+	
+	//traitement pour les Rènes
+	private synchronized void tourne(){//la tournée du pere Noel
 		System.out.println("Père noël - C'est la tournée de Noël");
 		try {
 			Thread.sleep(3000);//tournée
@@ -52,13 +57,15 @@ public class PereNoel extends Thread{
 			e.printStackTrace();
 		}
 		System.out.println("Père noël - Fin de la tournée du Père Noël");
+		salleRene.libererRenes();//libérer les Rènes à la fin de Noël
+		System.out.println("Père noël - Fin de la tournée du Père Noël 2");
 	}
 	
-	//pour les Elfes
-	public void resoudreProbleme(){
+	
+	//traitement pour les Elfes
+	private void resoudreProbleme(){
 		System.out.println("le Père noël - résoud des problènes");
 		
-		this.poolElfes.resoudreLesProblemes();
 	}
 
 }

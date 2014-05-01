@@ -9,50 +9,21 @@ public class main {
 	
 	public static void main(String[] args) {
 		
-		PoolRene poolR = new PoolRene();
-		
-		
-		for(int i = 0; i < 10; i++) {
-			boolean prob = Probleme.rencontrerProbleme(1);
-			
-			if(prob)
-				System.out.println("VRAI");
-			else
-				System.out.println("FAUX");
-		}
-		
-		PoolElfes poolE = new PoolElfes();
-		
-		PereNoel pereN = new PereNoel(poolR, poolE);
-		poolE.setPereNoel(pereN);
-		
-		Elfe e1 = new Elfe(poolE, 2000, 1);
-		e1.setNom("e1");
-		Elfe e2 = new Elfe(poolE, 2000, 1);
-		e2.setNom("e2");
-		Elfe e3 = new Elfe(poolE, 2000, 1);
-		e3.setNom("e3");
-		Elfe e4 = new Elfe(poolE, 2000, 1);
-		e4.setNom("e4");
-		
+		SalleAttenteRene sar = new SalleAttenteRene();
+		PereNoel pereN = new PereNoel(sar);
+		sar.setPereNoel(pereN);
 		
 		pereN.start();
-		e1.start();
-		e2.start();
-		e3.start();
-		e4.start();
 		
-		poolR.setPereNoel(pereN);
-		
-		Rene r0 = new Rene(poolR);
-		Rene r1 = new Rene(poolR);
-		Rene r2 = new Rene(poolR);
-		Rene r3 = new Rene(poolR);
-		Rene r4 = new Rene(poolR);
-		Rene r5 = new Rene(poolR);
-		Rene r6 = new Rene(poolR);
-		Rene r7 = new Rene(poolR);
-		Rene r8 = new Rene(poolR);
+		Rene r0 = new Rene(sar);
+		Rene r1 = new Rene(sar);
+		Rene r2 = new Rene(sar);
+		Rene r3 = new Rene(sar);
+		Rene r4 = new Rene(sar);
+		Rene r5 = new Rene(sar);
+		Rene r6 = new Rene(sar);
+		Rene r7 = new Rene(sar);
+		Rene r8 = new Rene(sar);
 		
 		r0.start();
 		r1.start();
