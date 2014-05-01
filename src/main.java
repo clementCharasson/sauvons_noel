@@ -9,11 +9,21 @@ public class main {
 	
 	public static void main(String[] args) {
 		
+<<<<<<< HEAD
 		SalleAttenteRene sar = new SalleAttenteRene();
 		PereNoel pereN = new PereNoel(sar);
 		sar.setPereNoel(pereN);
 		
 		pereN.start();
+=======
+		PoolRene poolR = new PoolRene();
+		
+		
+
+		
+		
+
+>>>>>>> 584ea2cd158acedc2136e4cf6f9be841218b9988
 		
 		Rene r0 = new Rene(sar);
 		Rene r1 = new Rene(sar);
@@ -38,7 +48,7 @@ public class main {
 		
 		
 		try {	
-			pereN.join();
+			
 			r0.join();
 			r1.join();
 			r2.join();
