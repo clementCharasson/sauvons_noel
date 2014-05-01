@@ -1,33 +1,40 @@
-import java.util.Timer;
-
-
 public class main {
 
 	/**
 	 * @param args
 	 */	
 	
-	public static void main(String[] args) {
+public static void main(String args[]) {
 		
-		SalleAttenteRene sar = new SalleAttenteRene();
-		PereNoel pereN = new PereNoel(sar);
-		sar.setPereNoel(pereN);
+		SalleAttenteElfes salle = new SalleAttenteElfes();
+		SalleAttenteRenes salleRenes = new SalleAttenteRenes();
 		
-		pereN.start();
-
-
+		GroupeElfe groupe = salle.getGroupe();
+		PereNoel pere = new PereNoel(groupe, salleRenes);
+		groupe.setPereNoel(pere);
+		salleRenes.setPereNoel(pere);
 		
-		Rene r0 = new Rene(sar);
-		Rene r1 = new Rene(sar);
-		Rene r2 = new Rene(sar);
-		Rene r3 = new Rene(sar);
-		Rene r4 = new Rene(sar);
-		Rene r5 = new Rene(sar);
-		Rene r6 = new Rene(sar);
-		Rene r7 = new Rene(sar);
-		Rene r8 = new Rene(sar);
+		Elfe e1 = new Elfe(salle, 1.);
+		Elfe e2 = new Elfe(salle, 1.);
+		Elfe e3 = new Elfe(salle, 1.);
+		Elfe e4 = new Elfe(salle, 1.);
+		Elfe e5 = new Elfe(salle, 1.);
+		Elfe e6 = new Elfe(salle, 1.);
 		
-		r0.start();
+		
+		Rene r1 = new Rene(salleRenes);
+		Rene r2 = new Rene(salleRenes);
+		Rene r3 = new Rene(salleRenes);
+		Rene r4 = new Rene(salleRenes);
+		Rene r5 = new Rene(salleRenes);
+		Rene r6 = new Rene(salleRenes);
+		Rene r7 = new Rene(salleRenes);
+		Rene r8 = new Rene(salleRenes);
+		Rene r9 = new Rene(salleRenes);
+		
+		
+		pere.start();
+		
 		r1.start();
 		r2.start();
 		r3.start();
@@ -36,12 +43,17 @@ public class main {
 		r6.start();
 		r7.start();
 		r8.start();
+		r9.start();
+		
+		e1.start();
+		e2.start();
+		e3.start();
+		e4.start();
+		e5.start();
+		e6.start();
 		
 		
-		
-		try {	
-			
-			r0.join();
+		try {
 			r1.join();
 			r2.join();
 			r3.join();
@@ -50,8 +62,17 @@ public class main {
 			r6.join();
 			r7.join();
 			r8.join();
+			
+			e1.join();
+			e2.join();
+			e3.join();
+			e4.join();
+			e5.join();
+			e6.join();
+			
+			pere.join();
+			
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

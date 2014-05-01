@@ -1,41 +1,59 @@
-import java.util.Random;
+public class Rene extends Thread {
 
-
-public class Rene extends Thread implements NoelWorker{
 	
-	private static int id_compt = 0;
-	public int id;
-
-	private SalleAttenteRene sar;
+	private int id;
+	
+	private static int cptId = 0;
+	
+	private SalleAttenteRenes salle;
+	
+	private long delais;
+	
+	//CONSTRUCTEURS
+	
 	/**
-	 * Constructeur de Rene
+	 * Constructeur 1, aucun controle sur le delais des vacances du rène
+	 * @param salle la salle où tous les renes vont jusqu'a ce que le dernier rène aille reveiller le père noel
 	 */
-	public Rene(SalleAttenteRene sar) {
-		this.sar = sar;
-		this.id = this.id_compt++;
+	public Rene(SalleAttenteRenes salle) {
+		this(salle, (long)(Math.random()*4000));
 	}
 	
-	
-	
-	public void run() {
-		while(true){
-			this.vancances();
-		}
+	/**
+	 * Constructeur 2 On a un controle total sur le temps des vacances du rène
+	 * @param salle la salle où tous les renes vont jusqu'a ce que le dernier rène aille reveiller le père noel
+	 * @param delais le delais des vacances des renes
+	 */
+	public Rene(SalleAttenteRenes salle, long delais) {
+		this.salle = salle;
+		this.delais = delais;
+		this.id = Rene.cptId++;
 	}
 	
-	public void vancances(){
-		long duree = (long) ( Math.random()*4000 );//attendre entre 0 et 4 secondes
-		System.out.println("Rène "+id+" - je suis en vacance  durée ="+duree+" ms");
+
+	private void vacances() {
+		System.out.println(this.toString()+" demarre ses vacances");
 		try {
-			Thread.sleep(duree);
-		} catch (InterruptedException e) {
+			Thread.sleep(this.delais);
+		}
+		catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Rène "+id+" - fin des vacances");
-		//fin des vacances le rène va ce mettre en à l'étable pour attendre le réveille du père Noël:
-		sar.attendreNoel(this);
+		System.out.println(this.toString()+" rentre de ses vacances");
 	}
 	
-
-
+	
+	
+	public String toString() {
+		return "Rène "+this.id;
+	}
+	
+	public void run() {
+		while(true) {
+			this.vacances();
+			
+			this.salle.attendreNoel(this);
+		}
+	}
+		
 }

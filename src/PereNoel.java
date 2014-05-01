@@ -1,71 +1,53 @@
 
-public class PereNoel extends Thread{
-	private SalleAttenteRene salleRene;
-
-	PereNoel(SalleAttenteRene salleRene /*TODO salle d'attente des elfes*/){
-		this.salleRene = salleRene;
+public class PereNoel extends Thread {
+	
+	private GroupeElfe groupe;
+	private SalleAttenteRenes salleRenes;
+	
+	public PereNoel(GroupeElfe groupe, SalleAttenteRenes salleRenes) {
+		this.groupe = groupe;
+		this.salleRenes = salleRenes;
 	}
 	
 	
-	public void  run(){
-		while(true){
-			this.dormir();
-			System.out.println("Pere noel réveillé - va faire un traitement");
-			this.traitement();
-			System.out.println("Pere noel réveillé - fin faire un traitement");
-		}
-	}
-	
-	public synchronized void dormir(){
-		System.out.println("Pere Noël - dort");
+	public synchronized void dormir() {
+		System.out.println("Le pere noel va dormir");
 		try {
-			this.wait();
+			wait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		System.out.println("le pere noel se reveille");
 	}
 	
 	public synchronized void reveille(){
-		System.out.println("Pere Noël - réveillé");
-		this.notify();//réveiller le père Noël
-		System.out.println("Pere Noël - réveillé 2");
+		notify();
 	}
 	
-	private synchronized void traitement(){
-		//regarder la salle d'attente des Rènes :
-		if(salleRene.getNbRene() == 9){
-			this.tourne();
-		}
-		/*
-		//regarder la salle d'attente des Efles :
-		if(???){
+	private void traitement() {
+		while(this.salleRenes.auComplet() || this.groupe.estPlein()) {
+			if(this.salleRenes.auComplet() && this.groupe.estPlein()) {
+				System.out.println("Le pere noel est face a tous les renes et tous les elfes");
+			}
+			//On va dans un premier temps regarder si les renes sont au complet
+			if(this.salleRenes.auComplet()) {
+				System.out.println("Le pere noel demarre la tournée");
+				this.salleRenes.tournee();
+			}
 			
-			//On resoud les problemes des elfes
-			this.resoudreProbleme();
+			//Puis ensuite les elfes
+			if(this.groupe.estPlein()) {
+				System.out.println("Le père noel vient resoudre les problemes");
+				this.groupe.resoudreProbleme();
+			}
 		}
-		*/
-		System.out.println("traitement fini");
 	}
 	
-	
-	//traitement pour les Rènes
-	private synchronized void tourne(){//la tournée du pere Noel
-		System.out.println("Père noël - C'est la tournée de Noël");
-		try {
-			Thread.sleep(3000);//tournée
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+	public void run() {
+		while(true) {
+			this.dormir();
+			
+			this.traitement();
 		}
-		System.out.println("Père noël - Fin de la tournée du Père Noël");
-		salleRene.libererRenes();//libérer les Rènes à la fin de Noël
-		System.out.println("Père noël - Fin de la tournée du Père Noël 2");
 	}
-	
-	
-	//traitement pour les Elfes
-	private void resoudreProbleme(){
-		System.out.println("le Père noël - résoud des problènes");
-		
-	}
-
 }
