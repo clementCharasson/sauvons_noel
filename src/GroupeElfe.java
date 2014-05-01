@@ -45,7 +45,7 @@ public class GroupeElfe {
 		if(this.estPlein()) {
 			//On va reveiller le Pere Noel car le groupe est plein
 			System.out.println("Le groupe est plein et va reveiller le père noel");
-			this.pereNoel.reveiller();
+			this.pereNoel.reveille();
 			
 			//On met l'elfe en attente de resolution de son probleme
 			System.out.println(elfe.toString()+" attend la resolution à son problème");
