@@ -85,7 +85,7 @@ public class Elfe extends Thread {
 			
 			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+"Le problème de "+this.toString()+" est résolu");
 		}
-		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" à terminer le jouet");
+		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a terminer le jouet");
 	}
 	
 	

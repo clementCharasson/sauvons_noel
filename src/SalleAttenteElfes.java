@@ -27,7 +27,7 @@ public class SalleAttenteElfes {
 	
 	
 	private synchronized void mettreEnAttente(Elfe elfe) {
-		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+elfe.toString()+" attend car groupe plein");
+		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+elfe.toString()+" attend car groupe plein");//TODO : message complètement faux
 		try {
 			wait();
 		} catch (InterruptedException e) {
