@@ -83,11 +83,11 @@ public class Elfe extends Thread {
 		
 		if(this.rencontrerProbleme()) {
 			//Se mettre dans la salle d'attente
-			System.out.println(this.toString()+" a rencontré un problème.");
+			System.out.println("[   ELFE   ]\t"+this.toString()+" a rencontré un problème.");
 			
 			this.salle.formationGroupe(this);;
 			
-			System.out.println("Le problème de "+this.toString()+" est résolu");
+			System.out.println("[   ELFE   ]\t"+"Le problème de "+this.toString()+" est résolu");
 		}
 		
 	}
@@ -97,7 +97,7 @@ public class Elfe extends Thread {
 	 * Pour afficher l'identité de l'elfe dans la console
 	 */
 	public String toString() {
-		return "Elfe "+this.id;
+		return "Elfe("+this.id+")";
 	}
 	
 	

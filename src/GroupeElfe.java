@@ -40,15 +40,15 @@ public class GroupeElfe {
 		}
 		
 		this.nbElfesDansLeGroupe++;
-		System.out.println("On ajoute un elfe dans le groupe : [NB = "+this.nbElfesDansLeGroupe+"; Elfe = "+elfe.toString()+" ]");
+		System.out.println("[ GRP ELFE ]\tOn ajoute un elfe dans le groupe : [NB = "+this.nbElfesDansLeGroupe+"; Elfe = "+elfe.toString()+" ]");
 		
 		if(this.estPlein()) {
 			//On va reveiller le Pere Noel car le groupe est plein
-			System.out.println("Le groupe est plein et va reveiller le père noel");
+			System.out.println("[ GRP ELFE ]\tLe groupe est plein et va reveiller le père noel");
 			this.pereNoel.reveille();
 			
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(elfe.toString()+" attend la resolution à son problème");
+			System.out.println("[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son problème");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -60,7 +60,7 @@ public class GroupeElfe {
 		}
 		else {
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(elfe.toString()+" attend la resolution à son problème");
+			System.out.println("[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son problème");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -91,7 +91,7 @@ public class GroupeElfe {
 	 */
 	private synchronized void finResolution() {
 		this.nbElfesDansLeGroupe = 0;
-		System.out.println("\tGROUPE VIDÉ");
+		System.out.println("[ GRP ELFE ]\tGROUPE VIDÉ");
 		notifyAll();
 	}
 }

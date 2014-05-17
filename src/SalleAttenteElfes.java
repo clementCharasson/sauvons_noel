@@ -27,7 +27,7 @@ public class SalleAttenteElfes {
 	
 	
 	private synchronized void mettreEnAttente(Elfe elfe) {
-		System.out.println(elfe.toString()+" ne peut pas entrer dans le groupe, il va attendre le retour du groupe actuel");
+		System.out.println("[SALLE ATT.]\t"+elfe.toString()+" ne peut pas entrer dans le groupe, il va attendre le retour du groupe actuel");
 		try {
 			wait();
 		} catch (InterruptedException e) {
@@ -37,8 +37,8 @@ public class SalleAttenteElfes {
 	
 	
 	public synchronized void groupeLibere() {
-		System.out.println("LE GROUPE EST LIBERE");
+		System.out.println("[SALLE ATT.]\t"+"LE GROUPE EST LIBERE");
 		notifyAll();
-		System.out.println("ON AVERTIS QUE LE GROUPE EST LIBERE");
+		System.out.println("[SALLE ATT.]\t"+"ON AVERTIS QUE LE GROUPE EST LIBERE");
 	}
 }

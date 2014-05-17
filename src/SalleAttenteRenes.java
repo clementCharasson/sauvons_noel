@@ -30,10 +30,10 @@ public class SalleAttenteRenes {
 	 */
 	public synchronized void attendreNoel(Rene rene) {
 		this.nbRenesDeRetour++;
-		System.out.println(rene.toString()+" ajouté [NB = "+this.nbRenesDeRetour+"]");
+		System.out.println("[SALLE RENE]\t"+rene.toString()+" ajouté [NB = "+this.nbRenesDeRetour+"]");
 		
 		if(this.auComplet()) {
-			System.out.println(rene.toString()+" va reveiller le pere noel");
+			System.out.println("[SALLE RENE]\t"+rene.toString()+" va reveiller le pere noel");
 			this.pereNoel.reveille();
 		}
 		
@@ -63,7 +63,7 @@ public class SalleAttenteRenes {
 	 * Le père noel va debloquer tous les renes
 	 */
 	private synchronized void retourTournee() {
-		System.out.println("Retour de la tournée, les renes peuvent retourner en vacances");
+		System.out.println("[SALLE RENE]\t"+"Retour de la tournée, les renes peuvent aller en vacances");
 		this.nbRenesDeRetour = 0;
 		notifyAll();
 	}

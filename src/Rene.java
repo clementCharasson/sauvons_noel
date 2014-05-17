@@ -32,20 +32,20 @@ public class Rene extends Thread {
 	
 
 	private void vacances() {
-		System.out.println(this.toString()+" demarre ses vacances");
+		System.out.println("[   RENE   ]\t"+this.toString()+" demarre ses vacances");
 		try {
 			Thread.sleep(this.delais);
 		}
 		catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println(this.toString()+" rentre de ses vacances");
+		System.out.println("[   RENE   ]\t"+this.toString()+" rentre de ses vacances");
 	}
 	
 	
 	
 	public String toString() {
-		return "Rène "+this.id;
+		return "Rène("+this.id+")";
 	}
 	
 	public void run() {
