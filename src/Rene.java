@@ -50,8 +50,10 @@ public class Rene extends Thread {
 	
 	public void run() {
 		while(true) {
+			//Le rène va partir en vacances
 			this.vacances();
 			
+			//Puis va se mettre en attente de noel (lorsque tous les renes seront rentré de vacances)
 			this.salle.attendreNoel(this);
 		}
 	}

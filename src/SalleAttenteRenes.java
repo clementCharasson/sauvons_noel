@@ -1,11 +1,15 @@
 
+/**
+ * SalleAttenteRenes va être le point d'attente de chaque Renes après leur retour de vacances jusqu'a la fin de la tournée de noel
+ *
+ */
 public class SalleAttenteRenes {
 
-	private static final int NB_RENES = 9;
+	private static final int NB_RENES = 9; //Nombre de renes necessaire pour aller réveiller le père noel
 	
-	private int nbRenesDeRetour;
+	private int nbRenesDeRetour; //Compteur de renes rentré de vacances
 	
-	private PereNoel pereNoel;
+	private PereNoel pereNoel; //Le père noel à réveiller lorsque tous les renes son rentré de vacances
 	
 	public SalleAttenteRenes() {
 		this.nbRenesDeRetour = 0; 
