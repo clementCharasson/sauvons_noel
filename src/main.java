@@ -4,7 +4,10 @@ public class main {
 	 * @param args
 	 */	
 	
-public static void main(String args[]) {
+ 	
+ 	
+ 	public static void main(String args[]) {
+	
 		
 		SalleAttenteElfes salle = new SalleAttenteElfes();
 		SalleAttenteRenes salleRenes = new SalleAttenteRenes();
@@ -21,17 +24,15 @@ public static void main(String args[]) {
 		Elfe e5 = new Elfe(salle, 1.);
 		Elfe e6 = new Elfe(salle, 1.);
 		
-		
-		Rene r1 = new Rene(salleRenes);
-		Rene r2 = new Rene(salleRenes);
+		Rene r1 = new Rene(salleRenes,-1);//>0 = temps de vacances random
+		Rene r2 = new Rene(salleRenes,-1);
 		Rene r3 = new Rene(salleRenes);
-		Rene r4 = new Rene(salleRenes);
-		Rene r5 = new Rene(salleRenes);
-		Rene r6 = new Rene(salleRenes);
-		Rene r7 = new Rene(salleRenes);
-		Rene r8 = new Rene(salleRenes);
+		Rene r4 = new Rene(salleRenes,-1);
+		Rene r5 = new Rene(salleRenes,-1);
+		Rene r6 = new Rene(salleRenes,-1);
+		Rene r7 = new Rene(salleRenes,-1);
+		Rene r8 = new Rene(salleRenes,-1);
 		Rene r9 = new Rene(salleRenes);
-		
 		
 		pere.start();
 		
@@ -51,7 +52,7 @@ public static void main(String args[]) {
 		e4.start();
 		e5.start();
 		e6.start();
-		
+
 		
 		try {
 			r1.join();
