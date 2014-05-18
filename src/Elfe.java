@@ -1,10 +1,15 @@
+/**
+ * public class Elfe extends Thread
+ *
+ *Thread représentent les Elfes
+ */
 public class Elfe extends Thread {
 
-	private int id;
-	private static int cptId = 0;
-	private SalleAttenteElfes salle;
-	private long delais;
-	private double probabiliteProbleme;
+	private int id;//identifiant
+	private static int cptId = 0;//compteur d'id
+	private SalleAttenteElfes salle;//ref. salle d'attente des elfes
+	private long delais;//temps de fabrication d'un jouet
+	private double probabiliteProbleme;//proba d'avoir un problème
 	
 	
 	//CONSTRUCTEURS
@@ -50,7 +55,9 @@ public class Elfe extends Thread {
 	
 	
 	/**
-	 * Va genere un probleme selon une probabilité d'en rencontrer.
+	 * private boolean rencontrerProbleme()
+	 * --------------------------------------
+	 * Génère un problème selon une probabilité.
 	 * @return vrai si un probleme a été rencontré et faux sinon
 	 */
 	private boolean rencontrerProbleme() {
@@ -65,8 +72,11 @@ public class Elfe extends Thread {
 	
 	
 	/**
-	 * Va attendre le delais de création d'un jouet puis lorsqu'un problème est rencontré va essayer de former un groupe
-	 * pour aller demander de l'aide au père noel
+	 * private void travailler()
+	 * --------------------------------
+	 * Va attendre le delais de création d'un jouet puis 
+	 * si un problème est rencontré va essayer de former 
+	 * un groupe pour aller demander de l'aide au père noel
 	 */
 	private void travailler() {
 		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" fabrique jouet ("+this.delais/1000L+" sec)");
@@ -90,6 +100,8 @@ public class Elfe extends Thread {
 	
 	
 	/**
+	 * public String toString()
+	 * -------------------------
 	 * Pour afficher l'identité de l'elfe dans la console
 	 */
 	public String toString() {
@@ -98,7 +110,11 @@ public class Elfe extends Thread {
 	
 	
 	/**
-	 * Le but unique des elfes est de travailler pour produire les jouets des enfants
+	 * public void run()
+	 * -------------------
+	 * Boucle infini.
+	 * Le but unique des elfes est de travailler 
+	 * pour produire les jouets des enfants. :-)
 	 */
 	public void run() {
 		while(true) {

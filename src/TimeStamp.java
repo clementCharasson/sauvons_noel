@@ -1,7 +1,8 @@
 /**
+ * public class TimeStamp
+ * 
  * classe pour afficher un petit time stamp dans les messages
  * @author clement
- *
  */
 public class TimeStamp {
 	
@@ -12,6 +13,11 @@ public class TimeStamp {
 		this.start = System.currentTimeMillis()/ 1000L;
 	}
 	
+	/**
+	 * Pour avoir la différence entre le temps de départ et le temps
+	 * corrant.
+	 * @return
+	 */
 	public static long getTime(){
 		return (System.currentTimeMillis()/ 1000L) - tstamp.start;
 	}

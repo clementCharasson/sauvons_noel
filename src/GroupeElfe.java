@@ -1,35 +1,51 @@
-
-
 /**
- * GroupeElfe sera unique et partagé entre les elfes qui verront leur problème résolu et par le Père noel
+ * public class GroupeElfe
+ * 
+ * C'est le groupe qui se forme pour réveiller le père
+ * noël. Les Elfes qui voudrons formé un groupe serons
+ * bloqué en salle d'attente.
+ * GroupeElfe sera unique et partagé entre les elfes 
+ * qui verront leur problème résolu et par le Père noel
  *
  */
 public class GroupeElfe {
 
-	private static final int NB_ELFES_MAX = 3;
+	private static final int NB_ELFES_MAX = 3;//nb. elfes par groupes
+	private PereNoel pereNoel;//ref. sur le père noël
+	private int nbElfesDansLeGroupe;//nb. elfes dans le groupe
+	private SalleAttenteElfes salle;//ref. salle d'attente
 	
-	private PereNoel pereNoel;
-	
-	private int nbElfesDansLeGroupe;
-	
-	private SalleAttenteElfes salle;
-	
+	/**
+	 * Constructeur.
+	 * @param salle : ref. sur la salle d'attentes
+	 */
 	public GroupeElfe(SalleAttenteElfes salle) {
 		this.salle = salle;
 	}
 	
-	
+	/**
+	 * public void setPereNoel(PereNoel pereNoel)
+	 * ------------------------------------------
+	 * Le père noël étant initialisé après le groupe
+	 * il faut un setteur pour le pere noël.
+	 */
 	public void setPereNoel(PereNoel pereNoel) {
 		this.pereNoel = pereNoel;
 	}
 	
-	
+	/**
+	 * public boolean estPlein()
+	 * -----------------------------
+	 * @return : vrai si le groupe est plein
+	 */
 	public boolean estPlein() {
 		return this.nbElfesDansLeGroupe == GroupeElfe.NB_ELFES_MAX;
 	}
 	
 	
 	/**
+	 * public synchronized boolean ajouterElfe(Elfe elfe)
+	 * ------------------------------------------------------
 	 * Va ajouter un elfe dans le groupe qui ira reveiller le père noel
 	 * @param elfe, uniquement pour afficher dans la console l'elfe qui entre dans le groupe
 	 */
@@ -72,9 +88,13 @@ public class GroupeElfe {
 	}
 	
 	/**
-	 * Methode appelée par le père noel pour aider les elfes en attente de resolution de problème
-	 * Le père noel va mettre du temps à résoudre le problème des elfes (Pour bien observer que personne ne peut entrer dans le groupe
-	 * lorsqu'il est plein)
+	 * public void resoudreProbleme()
+	 * -----------------------------------
+	 * Methode appelée par le père noel pour aider les elfes en 
+	 * attente de resolution de problème.
+	 * Le père noel va mettre du temps à résoudre le problème des 
+	 * elfes (Pour bien observer que personne ne peut entrer dans 
+	 * le groupe lorsqu'il est plein).
 	 */
 	public void resoudreProbleme() {
 		try{
@@ -87,6 +107,8 @@ public class GroupeElfe {
 	}
 	
 	/**
+	 * private synchronized void finResolution()
+	 * -----------------------------------------
 	 * Va finalement debloqué tous les elfes en attente de resolution de problème
 	 */
 	private synchronized void finResolution() {

@@ -1,14 +1,8 @@
 public class main {
 
-	/**
-	 * @param args
-	 */	
-	
- 	
- 	
  	public static void main(String args[]) {
 	
-		
+		//initialistaions :
 		SalleAttenteElfes salle = new SalleAttenteElfes();
 		SalleAttenteRenes salleRenes = new SalleAttenteRenes();
 		
@@ -17,6 +11,7 @@ public class main {
 		groupe.setPereNoel(pere);
 		salleRenes.setPereNoel(pere);
 		
+		//Les Elfes :
 		Elfe e1 = new Elfe(salle, 1.);
 		Elfe e2 = new Elfe(salle, 1.);
 		Elfe e3 = new Elfe(salle, 1.);
@@ -24,6 +19,7 @@ public class main {
 		Elfe e5 = new Elfe(salle, 1.);
 		Elfe e6 = new Elfe(salle, 1.);
 		
+		//les Rènes :
 		Rene r1 = new Rene(salleRenes,-1);//>0 = temps de vacances random
 		Rene r2 = new Rene(salleRenes,-1);
 		Rene r3 = new Rene(salleRenes);
@@ -34,6 +30,7 @@ public class main {
 		Rene r8 = new Rene(salleRenes,-1);
 		Rene r9 = new Rene(salleRenes);
 		
+		//Start :
 		pere.start();
 		
 		r1.start();
@@ -53,7 +50,7 @@ public class main {
 		e5.start();
 		e6.start();
 
-		
+		//Join :
 		try {
 			r1.join();
 			r2.join();
