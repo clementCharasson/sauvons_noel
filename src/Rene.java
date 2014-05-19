@@ -1,38 +1,38 @@
 /**
  * public class Rene extends Thread
  * 
- * Thread représentant les rènes
+ * Thread representant les rennes
  *
  */
 public class Rene extends Thread {
 
 	
-	private int id;//identifiant du Rène
+	private int id;//identifiant du Renne
 	private static int cptId = 0;//compteur d'id
-	private SalleAttenteRenes salle;//ref. sur la salle d'attente des Rènes
-	private long delais;//temps de vacances des Rènes
-	private boolean modeRandom;//si le true le temps de vacances sera différent à chaque fois
+	private SalleAttenteRenes salle;//ref. sur la salle d'attente des Rennes
+	private long delais;//temps de vacances des Rennes
+	private boolean modeRandom;//true si le temps de vacances sera different a chaque fois
 	
 	
 	//  CONSTRUCTEURS :
 	
 	/**
-	 * Constructeur 1, aucun controle sur le delais des vacances du rène
+	 * Constructeur 1, aucun controle sur le delai des vacances du renne
 	 * 
-	 * @param salle : la salle où tous les rènes vont jusqu'a ce que le 
-	 * dernier rène aille reveiller le père noel
-	 * Le temps de vacances est choisit au hazard (entre 0 et 4 secondes)
+	 * @param salle : la salle ou tous les rennes vont jusqu'a ce que le 
+	 * dernier renne aille reveiller le pere noel
+	 * Le temps de vacances est choisi au hasard (entre 0 et 4 secondes)
 	 */
 	public Rene(SalleAttenteRenes salle) {
 		this(salle, (long)(Math.random()*4000));
 	}
 	
 	/**
-	 * Constructeur 2 On a un controle total sur le temps des vacances du rène
+	 * Constructeur 2 On a un controle total sur le temps des vacances du renne
 	 * 
-	 * @param salle : la salle où tous les renes vont jusqu'a ce que le dernier 
-	 * rène aille reveiller le père noel
-	 * @param delais : le delais des vacances des renes, si le delais est négatif 
+	 * @param salle : la salle ou tous les rennes vont jusqu'a ce que le dernier 
+	 * renne aille reveiller le pere noel
+	 * @param delais : le delai des vacances des rennes, si le delai est negatif 
 	 * on est en mode random 
 	 */
 	public Rene(SalleAttenteRenes salle, long delais) {
@@ -45,10 +45,10 @@ public class Rene extends Thread {
 	/**
 	 * private void vacances()
 	 * ----------------------------
-	 * Les vacances du rene.
-	 * Si on est en "mode random" le rene aura un temps de vacances différents
-	 * à chaque fois (compirs entre 0 et 4 secondes).
-	 * Sinon il prendra toujours le même temps de vacances à chaques fois.
+	 * Les vacances du renne.
+	 * Si on est en "mode random" le rene aura un temps de vacances differents
+	 * a� chaque fois (compirs entre 0 et 4 secondes).
+	 * Sinon il prendra toujours le meme temps de vacances.
 	 */
 	private void vacances() {
 		System.out.println(TimeStamp.getTime()+"[   RENE   ]\t"+this.toString()+" demarre ses vacances (>4sec)");
@@ -68,30 +68,30 @@ public class Rene extends Thread {
 	/**
 	 * public String toString()
 	 * --------------------------
-	 * chaine retourné "Rène"+id
-	 * Si on est en "mode random" la chaine de caractère retourné
+	 * chaine retourne "Renne"+id
+	 * Si on est en "mode random" la chaine de caractere retournee
 	 * contien un dollard $.
 	 */
 	public String toString() {
 		if(this.modeRandom)
-			return "Rène("+this.id+")$";
+			return "Renne("+this.id+")$";
 		else
-			return "Rène("+this.id+")";
+			return "Renne("+this.id+")";
 	}
 	
 	/**
 	 * public void run()
 	 * ------------------
-	 * Boucle infi.
-	 * Les Rènes sont soit en vacances, soit
-	 * ils rentrent et attendent la tournée de Noel. 
+	 * Boucle infinie.
+	 * Soit les rennes sont en vacances, soit
+	 * ils rentrent et attendent la tournee de Noel. 
 	 */
 	public void run() {
 		while(true) {
-			//Le rène va partir en vacances
+			//Le renne va partir en vacances
 			this.vacances();
 			
-			//Puis va se mettre en attente de noel (lorsque tous les renes seront rentré de vacances)
+			//Puis va se mettre en attente de noel (lorsque tous les rennes seront rentres de vacances)
 			this.salle.attendreNoel(this);
 		}
 	}

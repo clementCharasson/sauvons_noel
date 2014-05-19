@@ -14,8 +14,8 @@ public class TimeStamp {
 	}
 	
 	/**
-	 * Pour avoir la différence entre le temps de départ et le temps
-	 * corrant.
+	 * Pour avoir la difference entre le temps de depart et le temps
+	 * courant.
 	 * @return
 	 */
 	public static long getTime(){

@@ -1,7 +1,7 @@
 /**
  * public class Elfe extends Thread
  *
- *Thread représentent les Elfes
+ *Thread representant les Elfes
  */
 public class Elfe extends Thread {
 
@@ -9,22 +9,22 @@ public class Elfe extends Thread {
 	private static int cptId = 0;//compteur d'id
 	private SalleAttenteElfes salle;//ref. salle d'attente des elfes
 	private long delais;//temps de fabrication d'un jouet
-	private double probabiliteProbleme;//proba d'avoir un problème
+	private double probabiliteProbleme;//proba d'avoir un probleme
 	
 	
 	//CONSTRUCTEURS
 	
 	/**
-	 * Constructeur 1 : On ne controle ni la probabilité de rencontrer un problème, ni le temps de construction d'un jouet
-	 * @param salle où les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
+	 * Constructeur 1 : On ne controle ni la probabilite de rencontrer un probleme, ni le temps de construction d'un jouet
+	 * @param salle ou les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
 	 */
 	public Elfe(SalleAttenteElfes salle) {
 		this(salle, ((long) (Math.random() * 5000)), Math.random());
 	}
 	
 	/**
-	 * Constructeur 2 : On fournis un delais de construction de jouet mais on ne controle pas la probabilité de rencontrer un problème
-	 * @param salle où les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
+	 * Constructeur 2 : On fournit un delai de construction de jouet mais on ne controle pas la probabilite de rencontrer un probleme
+	 * @param salle ou les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
 	 * @param delais le temps de construction d'un jouet (en millisecondes)
 	 */
 	public Elfe(SalleAttenteElfes salle, long delais) {
@@ -32,19 +32,19 @@ public class Elfe extends Thread {
 	}
 	
 	/**
-	 * Constructeur 3 : On controle la probabilité de rencontrer un probleme mais pas le temps de construction d'un jouet
-	 * @param salle où les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
-	 * @param probabiliteProbleme la probabilité de rencontrer un problème (entre 0 et 1)
+	 * Constructeur 3 : On controle la probabilite de rencontrer un probleme mais pas le temps de construction d'un jouet
+	 * @param salle ou les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
+	 * @param probabiliteProbleme la probabilite de rencontrer un probleme (entre 0 et 1)
 	 */
 	public Elfe(SalleAttenteElfes salle, double probabiliteProbleme) {
 		this(salle, ((long) (Math.random() * 5000)), probabiliteProbleme);
 	}
 	
 	/**
-	 * Constructeur 4 : On a un controle total sur le temps de construction des jouets ainsi que la probabilité de rencontrer un problème.
-	 * @param salle où les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
+	 * Constructeur 4 : On a un controle total sur le temps de construction des jouets ainsi que la probabilite de rencontrer un probleme.
+	 * @param salle ou les elfes iront attendre jusqu'a ce qu'ils puissent former des groupes
 	 * @param delais le temps de construction d'un jouet (en millisecondes)
-	 * @param probabiliteProbleme la probabilité de rencontrer un problème (entre 0 et 1)
+	 * @param probabiliteProbleme la probabilite de rencontrer un probleme (entre 0 et 1)
 	 */
 	public Elfe(SalleAttenteElfes salle, long delais, double probabiliteProbleme) {
 		this.salle = salle;
@@ -57,8 +57,8 @@ public class Elfe extends Thread {
 	/**
 	 * private boolean rencontrerProbleme()
 	 * --------------------------------------
-	 * Génère un problème selon une probabilité.
-	 * @return vrai si un probleme a été rencontré et faux sinon
+	 * Genere un probleme selon une probabilite.
+	 * @return vrai si un probleme a ete rencontre et faux sinon
 	 */
 	private boolean rencontrerProbleme() {
 		double random = Math.random();
@@ -74,9 +74,9 @@ public class Elfe extends Thread {
 	/**
 	 * private void travailler()
 	 * --------------------------------
-	 * Va attendre le delais de création d'un jouet puis 
-	 * si un problème est rencontré va essayer de former 
-	 * un groupe pour aller demander de l'aide au père noel
+	 * Va attendre le delai de creation d'un jouet puis 
+	 * si un probleme est rencontre va essayer de former 
+	 * un groupe pour aller demander de l'aide au pere noel
 	 */
 	private void travailler() {
 		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" fabrique jouet ("+this.delais/1000L+" sec)");
@@ -89,11 +89,11 @@ public class Elfe extends Thread {
 		
 		if(this.rencontrerProbleme()) {
 			//Se mettre dans la salle d'attente
-			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a rencontré un problème.");
+			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a rencontre un probleme.");
 			
 			this.salle.formationGroupe(this);;
 			
-			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+"Le problème de "+this.toString()+" est résolu");
+			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+"Le probleme de "+this.toString()+" est resolu");
 		}
 		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a terminer le jouet");
 	}
@@ -102,7 +102,7 @@ public class Elfe extends Thread {
 	/**
 	 * public String toString()
 	 * -------------------------
-	 * Pour afficher l'identité de l'elfe dans la console
+	 * Pour afficher l'identite de l'elfe dans la console
 	 */
 	public String toString() {
 		return "Elfe("+this.id+")";
@@ -112,7 +112,7 @@ public class Elfe extends Thread {
 	/**
 	 * public void run()
 	 * -------------------
-	 * Boucle infini.
+	 * Boucle infinie.
 	 * Le but unique des elfes est de travailler 
 	 * pour produire les jouets des enfants. :-)
 	 */

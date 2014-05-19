@@ -1,7 +1,7 @@
 /**
  * public class PereNoel extends Thread
  * 
- *	Thread réprésentant le pere Noël
+ *	Thread representant le pere Noel
  */
 public class PereNoel extends Thread {
 	
@@ -11,7 +11,7 @@ public class PereNoel extends Thread {
 	/**
 	 * Constructeur
 	 * @param groupe : ref. sur groupe d'elfe
-	 * @param salleRenes : ref. sur la salle d'attente Rene
+	 * @param salleRenes : ref. sur la salle d'attente Renne
 	 */
 	public PereNoel(GroupeElfe groupe, SalleAttenteRenes salleRenes) {
 		this.groupe = groupe;
@@ -36,7 +36,7 @@ public class PereNoel extends Thread {
 	/**
 	 * 	public synchronized void reveille()
 	 * ------------------------------------
-	 * Réveiller le père Noel
+	 * Reveiller le pere Noel
 	 */
 	public synchronized void reveille(){
 		notify();
@@ -45,27 +45,27 @@ public class PereNoel extends Thread {
 	/**
 	 * private void traitement()
 	 * -------------------------
-	 * Quand le père noël ce réveille il regarde qui là réveillé.
-	 * Il commence par les Renes (tourné de noel) puis les Elfes
-	 * (résolution de problèmes)
+	 * Quand le pere noel se reveille il regarde qui l'a� reveille.
+	 * Il commence par les Rennes (tournee de noel) puis les Elfes
+	 * (resolution de problemes)
 	 */
 	private void traitement() {
 		while(this.salleRenes.auComplet() || this.groupe.estPlein()) {
 			if(this.salleRenes.auComplet() && this.groupe.estPlein()) {
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"est face a tous les renes et tous les elfes");
+				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"est face a tous les rennes et tous les elfes");
 			}
-			//On va dans un premier temps regarder si les renes sont au complet
+			//On va dans un premier temps regarder si les rennes sont au complet
 			if(this.salleRenes.auComplet()) {
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====demarre la TOURNÉ (5 sec) ========");
+				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====demarre la TOURNEE (5 sec) ========");
 				this.salleRenes.tournee();
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====FIN la tourné (5 sec) ========");
+				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====FIN la tournee (5 sec) ========");
 			}
 			
 			//Puis ensuite les elfes
 			if(this.groupe.estPlein()) {
 				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====va RESOUDRE les problemes====");
 				this.groupe.resoudreProbleme();
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====a RÉSOLUT les problemes====");
+				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====a RESOLUT les problemes====");
 			}
 		}
 	}
@@ -73,8 +73,8 @@ public class PereNoel extends Thread {
 	/**
 	 * public void run()
 	 * ------------------
-	 * Boucle infi. Le père noel ne fait que dormir ou
-	 * faire un traitement (tourné ou résolution de problèmes)
+	 * Boucle infinie. Le pere noel ne fait que dormir ou
+	 * faire un traitement (tourne ou resolution de problemes)
 	 */
 	public void run() {
 		while(true) {

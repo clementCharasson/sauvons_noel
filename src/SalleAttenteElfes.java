@@ -1,9 +1,9 @@
 /**
  * public class SalleAttenteElfes
  * 
- * C'est là salle ou vont les Elfes quand ils ont un
- * problème.
- * SalleAttenteElfes sera partagée entre tous les elfes
+ * C'est la� salle ou vont les Elfes quand ils ont un
+ * probleme.
+ * SalleAttenteElfes sera partagee entre tous les elfes
  * 
  */
 public class SalleAttenteElfes {
@@ -20,7 +20,7 @@ public class SalleAttenteElfes {
 	/**
 	 * public GroupeElfe getGroupe()
 	 * -------------------------------
-	 * getteur
+	 * getter
 	 * @return
 	 */
 	public GroupeElfe getGroupe() {
@@ -30,12 +30,12 @@ public class SalleAttenteElfes {
 	/**
 	 * public void formationGroupe(Elfe elfe)
 	 * ----------------------------------------
-	 * méthode qui permet de former un groupe d'elfes.
-	 * Si le groupe est plein les elfes seront mis en attentes
+	 * methode qui permet de former un groupe d'elfes.
+	 * Si le groupe est plein les elfes seront mis en attente
 	 * @param elfe : l'elfe de la formation
 	 */
 	public void formationGroupe(Elfe elfe) {
-		//On va ajouter l'elfe au groupe qui ira reveiller le Père Noel		
+		//On va ajouter l'elfe au groupe qui ira reveiller le Pere Noel		
 		while(!this.groupe.ajouterElfe(elfe)) {
 			this.mettreEnAttente(elfe);
 		}
@@ -59,9 +59,9 @@ public class SalleAttenteElfes {
 	/**
 	 * public synchronized void groupeLibere()
 	 * -------------------------------------------------
-	 * Pour réveillé tout les elfes et forment un groupe.
-	 * Il normalement n'y a pas famine car le dispatcher 
-	 * dévennement java est équitable.
+	 * Pour reveiller tout les elfes.
+	 * Il n'y a normalement pas famine car le dispatcher 
+	 * d'evenement java est equitable.
 	 */
 	public synchronized void groupeLibere() {
 		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+"LE GROUPE EST LIBERE");

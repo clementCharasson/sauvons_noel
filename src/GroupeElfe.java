@@ -1,23 +1,23 @@
 /**
  * public class GroupeElfe
  * 
- * C'est le groupe qui se forme pour réveiller le père
- * noël. Les Elfes qui voudrons formé un groupe serons
- * bloqué en salle d'attente.
- * GroupeElfe sera unique et partagé entre les elfes 
- * qui verront leur problème résolu et par le Père noel
+ * C'est le groupe qui se forme pour reveiller le pere
+ * noel. Les Elfes qui voudront former un groupe seront
+ * bloques en salle d'attente.
+ * GroupeElfe sera unique et partage par les elfes 
+ * qui verront leur probleme resolu et le Pere noel
  *
  */
 public class GroupeElfe {
 
 	private static final int NB_ELFES_MAX = 3;//nb. elfes par groupes
-	private PereNoel pereNoel;//ref. sur le père noël
+	private PereNoel pereNoel;//ref. sur le pere noel
 	private int nbElfesDansLeGroupe;//nb. elfes dans le groupe
 	private SalleAttenteElfes salle;//ref. salle d'attente
 	
 	/**
 	 * Constructeur.
-	 * @param salle : ref. sur la salle d'attentes
+	 * @param salle : ref. sur la salle d'attente
 	 */
 	public GroupeElfe(SalleAttenteElfes salle) {
 		this.salle = salle;
@@ -26,8 +26,8 @@ public class GroupeElfe {
 	/**
 	 * public void setPereNoel(PereNoel pereNoel)
 	 * ------------------------------------------
-	 * Le père noël étant initialisé après le groupe
-	 * il faut un setteur pour le pere noël.
+	 * Le pere noel etant initialise apres le groupe
+	 * il faut un setteur pour le pere noel.
 	 */
 	public void setPereNoel(PereNoel pereNoel) {
 		this.pereNoel = pereNoel;
@@ -46,7 +46,7 @@ public class GroupeElfe {
 	/**
 	 * public synchronized boolean ajouterElfe(Elfe elfe)
 	 * ------------------------------------------------------
-	 * Va ajouter un elfe dans le groupe qui ira reveiller le père noel
+	 * Va ajouter un elfe dans le groupe qui ira reveiller le pere noel
 	 * @param elfe, uniquement pour afficher dans la console l'elfe qui entre dans le groupe
 	 */
 	public synchronized boolean ajouterElfe(Elfe elfe) {
@@ -60,11 +60,11 @@ public class GroupeElfe {
 		
 		if(this.estPlein()) {
 			//On va reveiller le Pere Noel car le groupe est plein
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\tLe groupe est plein et va reveiller le père noel");
+			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\tLe groupe est plein et va reveiller le pere noel");
 			this.pereNoel.reveille();
 			
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son problème");
+			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son probleme");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -76,7 +76,7 @@ public class GroupeElfe {
 		}
 		else {
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son problème");
+			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution de son probleme");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -90,9 +90,9 @@ public class GroupeElfe {
 	/**
 	 * public void resoudreProbleme()
 	 * -----------------------------------
-	 * Methode appelée par le père noel pour aider les elfes en 
-	 * attente de resolution de problème.
-	 * Le père noel va mettre du temps à résoudre le problème des 
+	 * Methode appelee par le pere noel pour aider les elfes en 
+	 * attente de resolution de probleme.
+	 * Le pere noel va mettre du temps a resoudre le probleme des 
 	 * elfes (Pour bien observer que personne ne peut entrer dans 
 	 * le groupe lorsqu'il est plein).
 	 */
@@ -109,7 +109,7 @@ public class GroupeElfe {
 	/**
 	 * private synchronized void finResolution()
 	 * -----------------------------------------
-	 * Va finalement debloqué tous les elfes en attente de resolution de problème
+	 * Va finalement debloque tous les elfes en attente de resolution de probleme
 	 */
 	private synchronized void finResolution() {
 		this.nbElfesDansLeGroupe = 0;
