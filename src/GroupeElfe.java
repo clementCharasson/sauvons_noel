@@ -56,15 +56,15 @@ public class GroupeElfe {
 		}
 		
 		this.nbElfesDansLeGroupe++;
-		System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\tOn ajoute un elfe dans le groupe : [NB = "+this.nbElfesDansLeGroupe+"; Elfe = "+elfe.toString()+" ]");
+		System.out.println(TimeStamp.getTime()+"[ GRP  ELFE ]\tOn ajoute un elfe dans le groupe : [NB = "+this.nbElfesDansLeGroupe+"; Elfe = "+elfe.toString()+" ]");
 		
 		if(this.estPlein()) {
 			//On va reveiller le Pere Noel car le groupe est plein
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\tLe groupe est plein et va reveiller le pere noel");
+			System.out.println(TimeStamp.getTime()+"[ GRP  ELFE ]\tLe groupe est plein et va reveiller le pere noel");
 			this.pereNoel.reveille();
 			
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution à son probleme");
+			System.out.println(TimeStamp.getTime()+"[ GRP  ELFE ]\t"+elfe.toString()+" attend la resolution à son probleme");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -76,7 +76,7 @@ public class GroupeElfe {
 		}
 		else {
 			//On met l'elfe en attente de resolution de son probleme
-			System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\t"+elfe.toString()+" attend la resolution de son probleme");
+			System.out.println(TimeStamp.getTime()+"[ GRP  ELFE ]\t"+elfe.toString()+" attend la resolution de son probleme");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -98,7 +98,7 @@ public class GroupeElfe {
 	 */
 	public void resoudreProbleme() {
 		try{
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class GroupeElfe {
 	 */
 	private synchronized void finResolution() {
 		this.nbElfesDansLeGroupe = 0;
-		System.out.println(TimeStamp.getTime()+"[ GRP ELFE ]\tGROUPE VIDÉ");
+		System.out.println(TimeStamp.getTime()+"[ GRP  ELFE ]\tGROUPE VIDÉ");
 		notifyAll();
 	}
 }

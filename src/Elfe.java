@@ -79,7 +79,7 @@ public class Elfe extends Thread {
 	 * un groupe pour aller demander de l'aide au pere noel
 	 */
 	private void travailler() {
-		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" fabrique jouet ("+this.delais/1000L+" sec)");
+		System.out.println(TimeStamp.getTime()+"[   ELFE    ]\t"+this.toString()+" fabrique jouet ("+this.delais/1000L+" sec)");
 		try {
 			Thread.sleep(this.delais);
 		}
@@ -89,13 +89,13 @@ public class Elfe extends Thread {
 		
 		if(this.rencontrerProbleme()) {
 			//Se mettre dans la salle d'attente
-			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a rencontre un probleme.");
+			System.out.println(TimeStamp.getTime()+"[   ELFE    ]\t"+this.toString()+" a rencontre un probleme.");
 			
 			this.salle.formationGroupe(this);;
 			
-			System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+"Le probleme de "+this.toString()+" est resolu");
+			System.out.println(TimeStamp.getTime()+"[   ELFE    ]\t"+"Le probleme de "+this.toString()+" est resolu");
 		}
-		System.out.println(TimeStamp.getTime()+"[   ELFE   ]\t"+this.toString()+" a terminer le jouet");
+		System.out.println(TimeStamp.getTime()+"[   ELFE    ]\t"+this.toString()+" a terminer le jouet");
 	}
 	
 	

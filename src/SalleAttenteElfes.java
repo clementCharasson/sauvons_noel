@@ -1,7 +1,7 @@
 /**
  * public class SalleAttenteElfes
  * 
- * C'est la  salle ou vont les Elfes quand ils ont un
+ * C'est la salle ou vont les Elfes quand ils ont un
  * probleme.
  * SalleAttenteElfes sera partagee entre tous les elfes
  * 
@@ -48,7 +48,7 @@ public class SalleAttenteElfes {
 	 * @param elfe : elfe mis en attente
 	 */
 	private synchronized void mettreEnAttente(Elfe elfe) {
-		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+elfe.toString()+" attend car groupe plein");
+		System.out.println(TimeStamp.getTime()+"[SALLE  ATT.]\t"+elfe.toString()+" attend car groupe plein");
 		try {
 			wait();
 		} catch (InterruptedException e) {
@@ -64,8 +64,8 @@ public class SalleAttenteElfes {
 	 * d'evenement java est equitable.
 	 */
 	public synchronized void groupeLibere() {
-		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+"LE GROUPE EST LIBERE");
+		System.out.println(TimeStamp.getTime()+"[SALLE  ATT.]\t"+"LE GROUPE EST LIBERE");
 		notifyAll();
-		System.out.println(TimeStamp.getTime()+"[SALLE ATT.]\t"+"ON AVERTIS QUE LE GROUPE EST LIBERE");
+		System.out.println(TimeStamp.getTime()+"[SALLE  ATT.]\t"+"ON AVERTIS QUE LE GROUPE EST LIBERE");
 	}
 }

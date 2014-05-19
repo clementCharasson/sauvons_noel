@@ -4,12 +4,12 @@ public class main {
 	
 		//initialistaions :
 		SalleAttenteElfes salle = new SalleAttenteElfes();
-		SalleAttenteRenes salleRenes = new SalleAttenteRenes();
+		SalleAttenteRennes salleRennes = new SalleAttenteRennes();
 		
 		GroupeElfe groupe = salle.getGroupe();
-		PereNoel pere = new PereNoel(groupe, salleRenes);
+		PereNoel pere = new PereNoel(groupe, salleRennes);
 		groupe.setPereNoel(pere);
-		salleRenes.setPereNoel(pere);
+		salleRennes.setPereNoel(pere);
 		
 		//Les Elfes :
 		Elfe e1 = new Elfe(salle, 1.);
@@ -19,16 +19,16 @@ public class main {
 		Elfe e5 = new Elfe(salle, 1.);
 		Elfe e6 = new Elfe(salle, 1.);
 		
-		//les Rènes :
-		Rene r1 = new Rene(salleRenes,-1);//>0 = temps de vacances random
-		Rene r2 = new Rene(salleRenes,-1);
-		Rene r3 = new Rene(salleRenes);
-		Rene r4 = new Rene(salleRenes,-1);
-		Rene r5 = new Rene(salleRenes,-1);
-		Rene r6 = new Rene(salleRenes,-1);
-		Rene r7 = new Rene(salleRenes,-1);
-		Rene r8 = new Rene(salleRenes,-1);
-		Rene r9 = new Rene(salleRenes);
+		//les Rènnes :
+		Renne r1 = new Renne(salleRennes,-1);//>0 = temps de vacances random
+		Renne r2 = new Renne(salleRennes,-1);
+		Renne r3 = new Renne(salleRennes);
+		Renne r4 = new Renne(salleRennes,-1);
+		Renne r5 = new Renne(salleRennes,-1);
+		Renne r6 = new Renne(salleRennes,-1);
+		Renne r7 = new Renne(salleRennes,-1);
+		Renne r8 = new Renne(salleRennes,-1);
+		Renne r9 = new Renne(salleRennes);
 		
 		//Start :
 		pere.start();

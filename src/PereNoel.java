@@ -6,16 +6,16 @@
 public class PereNoel extends Thread {
 	
 	private GroupeElfe groupe;
-	private SalleAttenteRenes salleRenes;
+	private SalleAttenteRennes salleRennes;
 	
 	/**
 	 * Constructeur
 	 * @param groupe : ref. sur groupe d'elfe
-	 * @param salleRenes : ref. sur la salle d'attente Renne
+	 * @param salleRennes : ref. sur la salle d'attente Renne
 	 */
-	public PereNoel(GroupeElfe groupe, SalleAttenteRenes salleRenes) {
+	public PereNoel(GroupeElfe groupe, SalleAttenteRennes salleRennes) {
 		this.groupe = groupe;
-		this.salleRenes = salleRenes;
+		this.salleRennes = salleRennes;
 	}
 	
 	/**
@@ -24,13 +24,13 @@ public class PereNoel extends Thread {
 	 * Faire dormir le pere noel
 	 */
 	public synchronized void dormir() {
-		System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"va dormir");
+		System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"va dormir");
 		try {
 			wait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"se reveille");
+		System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"se reveille");
 	}
 	
 	/**
@@ -45,27 +45,27 @@ public class PereNoel extends Thread {
 	/**
 	 * private void traitement()
 	 * -------------------------
-	 * Quand le pere noel se reveille il regarde qui l'a  reveille.
+	 * Quand le pere noel se reveille il regarde qui l'a reveille.
 	 * Il commence par les Rennes (tournee de noel) puis les Elfes
 	 * (resolution de problemes)
 	 */
 	private void traitement() {
-		while(this.salleRenes.auComplet() || this.groupe.estPlein()) {
-			if(this.salleRenes.auComplet() && this.groupe.estPlein()) {
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"est face a tous les rennes et tous les elfes");
+		while(this.salleRennes.auComplet() || this.groupe.estPlein()) {
+			if(this.salleRennes.auComplet() && this.groupe.estPlein()) {
+				System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"est face a tous les rennes et tous les elfes");
 			}
 			//On va dans un premier temps regarder si les rennes sont au complet
-			if(this.salleRenes.auComplet()) {
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====demarre la TOURNEE (5 sec) ========");
-				this.salleRenes.tournee();
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====FIN la tournee (5 sec) ========");
+			if(this.salleRennes.auComplet()) {
+				System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"====demarre la TOURNEE (5 sec) ========");
+				this.salleRennes.tournee();
+				System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"====FIN la tournee (5 sec) ========");
 			}
 			
 			//Puis ensuite les elfes
 			if(this.groupe.estPlein()) {
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====va RESOUDRE les problemes====");
+				System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"====va RESOUDRE les problemes====");
 				this.groupe.resoudreProbleme();
-				System.out.println(TimeStamp.getTime()+"[PERE NOEL ]\t"+"====a RESOLUT les problemes====");
+				System.out.println(TimeStamp.getTime()+"[ PERE NOEL ]\t"+"====a RESOLUT les problemes====");
 			}
 		}
 	}
